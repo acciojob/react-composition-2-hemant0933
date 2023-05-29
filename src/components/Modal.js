@@ -5,12 +5,10 @@ const Modal = ({ show, onClose, children }) => {
 
   return (
     <div className="modal-overlay">
-      <div className="modal-dialog">
         <button className="modal-close showModal" onClick={onClose}>
           Close
         </button>
         {children}
-      </div>
     </div>
   );
 };
