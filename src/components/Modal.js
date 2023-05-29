@@ -1,6 +1,20 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 
 const Modal = ({ show, onClose}) => {
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (event.target.classList.contains('modal-overlay')) {
+        onClose();
+      }
+    };
+  if (show) {
+      window.addEventListener('click', handleOutsideClick);
+    }
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, [show, onClose]);
+
   if (!show) return null;
 
   return (
